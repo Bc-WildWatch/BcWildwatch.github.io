@@ -19,6 +19,8 @@ const __dirname  = path.dirname(__filename);
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+// Serve node_modules for Speed Insights
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 // ── Public config consumed by the frontend (no secrets) ──
 app.get("/api/config", (_req, res) => {
